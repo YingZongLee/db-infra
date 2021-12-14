@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  postgres:
+    image: mdillon/postgis:10
+    container_name: db-infra_postgres
+    environment:
+      - POSTGRES_USER=pgs
+      - POSTGRES_PASSWORD=123456
+    volumes:
+      - ./conf/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./data/postgres:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+
